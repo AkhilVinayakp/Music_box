@@ -25,3 +25,26 @@ for item in song_list:
 pygame.init()
 pygame.mixer.init()
 
+
+def play():
+    pygame.mixer.music.load(playlist.get(tkr.ACTIVE))
+    var.set(playlist.get(tkr.ACTIVE))
+    pygame.mixer.music.play()
+
+
+def stop():
+    pygame.mixer.music.stop()
+
+
+def pause():
+    pygame.mixer.music.pause()
+
+
+def resume():
+    pygame.mixer.music.unpause()
+
+
+b_play = tkr.Button(box, height=3, width=3, text="play", command=play())
+
+
+box.mainloop()
