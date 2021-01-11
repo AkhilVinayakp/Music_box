@@ -7,7 +7,7 @@ import os
 class Pablo:
     def __init__(self, screen):
         self.screen = screen
-        self.pablo_img = pygame.image.load("../../icons/search.ico")
+        self.pablo_img = pygame.image.load('./Music_box/icons/search.ico')
         self.screen.blit(self.pablo_img, (370, 480))
 
     def move(self, x, y):
