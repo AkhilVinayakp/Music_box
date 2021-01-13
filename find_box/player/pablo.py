@@ -20,3 +20,6 @@ class Pablo:
         elif y < 0:
             y = 736
         self.screen.blit(self.pablo_img, (x, y))
+
+    def __str__(self):
+        return "this is pablo"

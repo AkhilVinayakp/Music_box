@@ -42,31 +42,41 @@ def enemy(x, y):
     screen.blit(enemyImg, (x, y))
 
 
+px_c = 0
+py_c = 0
+
 #  adding the event for quiting the window
 running = True
 #  gaming loop
 while running:
     for event in pygame.event.get():  # event.get will get all event happening
-        if event.type == pygame.QUIT:  # pygame QUITE is an event happens when the close button is clicked
+        if event.type == pygame.QUIT:
             running = False
-        #         keystroke event
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                print("key left pressed")
-                pX_change = -0.1
+                print('left key down')
+                px_c = -.1
             if event.key == pygame.K_RIGHT:
-                print("key right pressed")
-                pX_change = 0.1
+                px_c = .1
+                print('right key down')
+            if event.key == pygame.K_UP:
+                py_c = -.1
+                print('up key down')
+            if event.key == pygame.K_DOWN:
+                py_c = .1
+                print('down key down')
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                print("KEY released..")
-                pX_change = 0
+            if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_DOWN, pygame.K_RIGHT]:
+                px_c = 0
+                py_c = 0
+                print('key up')
 
     #     anything stays all time should be here
     #     filling the screen at the beginning
 
     screen.fill((0, 128, 128))
-    pX = pX + pX_change
+    pX = pX + px_c
+    pY = pY + py_c
     player(pX, pY)
     enemy(eX, eY)
     #     updating the window
